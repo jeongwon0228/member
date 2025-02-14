@@ -1,0 +1,79 @@
+1) 팀프 조원
+2) 조원별 처음 기본 + 프로그래밍 한것
+3) 공통기능도 전부 첨부
+기능, 구현 기술 : 14~16폰트
+
+기능 :  action 클래스는 사용자의 입력을 받아서 회원 정보
+삭제를 처리하는 클래스로서의 기능을 담당하고  Service      클래스는 실제로 회원 정보 삭제 작업을 수행하는 클래스의 기능을 담당했고 마지막 dao 클래스는 회원 데이터를 관리하는 접근 객체 클래스로 기능을 하여 사용자가 id를 입력하면 해당 회원의 정보 삭제 하는 기능 수행
+구현 기술 :  action : consoleutil 클래스의getMemberId()메서드 사용하여 입력한 id를 받아오거나 값이 0이면 삭제할 수 없다는 메시지 출력, try-catch로 예외 처리
+작업 성성, 실패시 여부 메시지 출력
+Service :  deleteMember(int memberId) 삭제 처리하는 메서드 memberDAO어 접근하여 회원 삭제  삭제가 성공하면 true 실패시 false를 반환  
+DAO :  copyOnWriteaArray를 사용하여 데이터 저장 deleteMember(int memberId) memberList에서 id를 찾은 후 삭제 for-each문 으로 memberList에서 삭제 회원 발견시 remove()로 삭제, 실패시 false를 반환 하여
+memberDeleteService에서 실패 전달     
+
+모듈화 구성
+
+
+
+
+
+
+
+
+
+
+
+
+기능 : 하나에 대한 삭제 
+3개의 클래스 모듈화 하여 
+아이디 값을 사용자에게 받아 
+아이디 값이 리스트에 동일시 데이터 삭제후 
+회원정보 삭제출력 
+잘못된 값을 입력시 사용자에게 다시 입력하라고 출력
+
+
+
+아이디가 리스트에 없는 : 경우 사용자에게 다시 입력하라고 출력
+잘못된 값을 입력한 경우 : 사용자에게 다시 입력하라고 출력
+
+구현기능 : action : consoleutil 클래스의getMemberId()
+메서드 사용하여 입력한 id를 받아오거나 값이 0이면 삭제할 수 없다는 메시지 출력,
+try-catch로 예외 처리 작업 성성, 실패시 여부 메시지 출력
+Service :  deleteMember(int memberId) 삭제 처리하는 메서드가 memberDAO를 통해 
+회원 삭제 후 action에 전달삭제가 성공하면 true 실패시 false를 반환  
+DAO :  List는 copyOnWriteaArray를 사용하여 데이터 저장
+ deleteMember(int memberId) memberList에서 id를 찾은 후 
+삭제 for-each문 으로 memberList에서 삭제 회원 발견시 
+remove()로 삭제, 실패시 false를 반환 하여
+memberDeleteService에서 실패 전달
+
+
+기능 : 아이디를 입력 받아 입력 받은 회원 정보를 저장
+구현기능 : action : consoleutil 클래스의 getNewMember()
+메소드를 호출하여 Scanner를 통하여 사용자가
+입력한 새로운 회원 정보 받고 service의 addMember()메서드를
+호출하여 회원 등록 요청 후 등록 완료되면 성공 여부에 관련하여
+결과 출력
+service : addMember(Member newMember)메서드의 
+memberdao의 insert 메서드 호출하여 데이터 저장 
+insertNewMember()메서드가 성공적으로 추가하면 
+true실패면 false 반환한다
+dao : copyOnWriteArryList에 입력된 회원 데이터 저장
+insertNewMember(Member newMember)메서드는 
+memberList.add(newMember)사용하여 
+새 회원 데이터를 리스트에 추가한다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
